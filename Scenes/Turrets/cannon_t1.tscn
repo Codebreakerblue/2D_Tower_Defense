@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://btkr6gv8xia3r"]
+
+[ext_resource type="Script" path="res://Scenes/Turrets/cannon_t1.gd" id="1_0roop"]
+[ext_resource type="Texture2D" uid="uid://cclrtuci3iuol" path="res://Assets/Towers/towerDefense_tile181.png" id="1_r4ayx"]
+[ext_resource type="Texture2D" uid="uid://bhrr41a1jo2l0" path="res://Assets/Towers/towerDefense_tile249.png" id="2_7xymd"]
+
+[node name="CannonT1" type="Node2D"]
+script = ExtResource("1_0roop")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_r4ayx")
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("2_7xymd")
+offset = Vector2(8, 0)
+
+[node name="MuzzleFlashOffset" type="Node2D" parent="Turret"]
+position = Vector2(34, 0)

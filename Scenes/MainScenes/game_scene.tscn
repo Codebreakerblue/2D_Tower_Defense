@@ -1,0 +1,200 @@
+[gd_scene load_steps=16 format=3 uid="uid://dj66r7fwg8ijs"]
+
+[ext_resource type="Script" path="res://Scenes/MainScenes/game_scene.gd" id="1_3ryf4"]
+[ext_resource type="PackedScene" uid="uid://cphm45oynr8c4" path="res://Scenes/Maps/map_1.tscn" id="1_ijptp"]
+[ext_resource type="Texture2D" uid="uid://dyg5fdi72t5xg" path="res://Assets/UI/Buttons/blue_button12.png" id="2_blkf4"]
+[ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_b3sb8"]
+[ext_resource type="Texture2D" uid="uid://bg7r0xruondrw" path="res://Assets/UI/Buttons/blue_button10.png" id="3_s2iv8"]
+[ext_resource type="Texture2D" uid="uid://bhrr41a1jo2l0" path="res://Assets/Towers/towerDefense_tile249.png" id="4_3b0b2"]
+[ext_resource type="Script" path="res://Scenes/MainScenes/CannonT1BuildButton.gd" id="5_a778e"]
+[ext_resource type="Texture2D" uid="uid://6rchcmambjvx" path="res://Assets/Towers/towerDefense_tile250.png" id="5_m88g7"]
+[ext_resource type="Texture2D" uid="uid://b6hn6qcifk0ya" path="res://Assets/Towers/towerDefense_tile229.png" id="6_8b3gr"]
+[ext_resource type="Texture2D" uid="uid://bh2fqwpnm5hvi" path="res://Assets/Towers/towerDefense_tile251.png" id="7_drnxp"]
+[ext_resource type="Script" path="res://Scenes/MainScenes/CannonT2BuildButton.gd" id="7_jxjkt"]
+[ext_resource type="Texture2D" uid="uid://b2bh8jct1gd21" path="res://Assets/Towers/towerDefense_tile252.png" id="8_uvm66"]
+[ext_resource type="Texture2D" uid="uid://v62qownmnfrq" path="res://Assets/Towers/towerDefense_tile228.png" id="8_wumk2"]
+[ext_resource type="Script" path="res://Scenes/MainScenes/MissileT1BuildButton.gd" id="9_fg5eo"]
+[ext_resource type="Script" path="res://Scenes/MainScenes/MissileT2BuildButton.gd" id="12_0361o"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_3ryf4")
+
+[node name="Map1" parent="." instance=ExtResource("1_ijptp")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_b3sb8")
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Margin" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BuildBar" type="VBoxContainer" parent="UI/HUD/Margin"]
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="CannonT1BuildButton" type="TextureButton" parent="UI/HUD/Margin/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_blkf4")
+texture_pressed = ExtResource("3_s2iv8")
+stretch_mode = 0
+script = ExtResource("5_a778e")
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Margin/BuildBar/CannonT1BuildButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3b0b2")
+stretch_mode = 3
+
+[node name="CannonT2BuildButton" type="TextureButton" parent="UI/HUD/Margin/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_blkf4")
+texture_pressed = ExtResource("3_s2iv8")
+stretch_mode = 0
+script = ExtResource("7_jxjkt")
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/Margin/BuildBar/CannonT2BuildButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_m88g7")
+stretch_mode = 3
+
+[node name="MissileT1BuildButton" type="TextureButton" parent="UI/HUD/Margin/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_blkf4")
+texture_pressed = ExtResource("3_s2iv8")
+stretch_mode = 0
+script = ExtResource("9_fg5eo")
+
+[node name="Turret" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT1BuildButton"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8b3gr")
+stretch_mode = 3
+
+[node name="Missile1" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT1BuildButton/Turret"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -9.0
+offset_right = 10.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_drnxp")
+stretch_mode = 3
+
+[node name="Missile2" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT1BuildButton/Turret"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_drnxp")
+stretch_mode = 3
+
+[node name="MissileT2BuildButton" type="TextureButton" parent="UI/HUD/Margin/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_blkf4")
+texture_pressed = ExtResource("3_s2iv8")
+stretch_mode = 0
+script = ExtResource("12_0361o")
+
+[node name="Turret" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT2BuildButton"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wumk2")
+stretch_mode = 3
+
+[node name="Missile1" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT2BuildButton/Turret"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uvm66")
+stretch_mode = 3
+
+[node name="Missile2" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT2BuildButton/Turret"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 9.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uvm66")
+stretch_mode = 3
