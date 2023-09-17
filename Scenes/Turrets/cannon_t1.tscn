@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://btkr6gv8xia3r"]
+[gd_scene load_steps=5 format=3 uid="uid://btkr6gv8xia3r"]
 
 [ext_resource type="Script" path="res://Scenes/Turrets/cannon_t1.gd" id="1_0roop"]
 [ext_resource type="Texture2D" uid="uid://cclrtuci3iuol" path="res://Assets/Towers/towerDefense_tile181.png" id="1_r4ayx"]
 [ext_resource type="Texture2D" uid="uid://bhrr41a1jo2l0" path="res://Assets/Towers/towerDefense_tile249.png" id="2_7xymd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kaca7"]
+radius = 175.0
 
 [node name="CannonT1" type="Node2D"]
 script = ExtResource("1_0roop")
@@ -16,3 +19,11 @@ offset = Vector2(8, 0)
 
 [node name="MuzzleFlashOffset" type="Node2D" parent="Turret"]
 position = Vector2(34, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="RangeCollisionShape" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_kaca7")
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

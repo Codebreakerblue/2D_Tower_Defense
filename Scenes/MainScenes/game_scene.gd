@@ -12,7 +12,11 @@ var build_tile
 var build_type
 
 var valid_color = "26ff00aa"
-var  invalid_color = "ff442288"
+var invalid_color = "ff442288"
+
+var current_wave = 0
+var enemies_in_wave = 0
+
 
 func _ready():
 	
@@ -22,12 +26,12 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("build_pressed", initiate_build_mode)
 		print(i.name + " connected")
-
+		
+	
 
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
-
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -35,8 +39,6 @@ func _unhandled_input(event):
 		
 	if event.is_action_released("ui_accept") and build_mode == true:
 		verify_and_build()
-		
-
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("game_multiple_build"):
@@ -46,6 +48,32 @@ func _unhandled_key_input(event):
 	if event.is_action_released("game_multiple_build"):
 #		print("multiple build off!")
 		multiple_build = false
+
+##
+## Enemy Wave Functions
+##
+
+func start_next_wave():
+	current_wave += 1
+	var wave_data = retrieve_wave_data(current_wave)
+	await get_tree().create_timer(1, false).timeout ## Padding between waves so they don't start instantly
+	spawn_enemies(wave_data)
+
+func retrieve_wave_data(current_wave):
+	var wave_data = [["blue_tank", 0.7], ["blue_tank", 0.1]] ## TEMP hardcoded wave data for now
+	enemies_in_wave = wave_data.size()
+	return wave_data
+
+func spawn_enemies(wave_data):
+	for i in wave_data:
+		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
+		map_node.get_node("EnemyPath").add_child(new_enemy, true)
+		await get_tree().create_timer(i[1], false).timeout
+		
+
+##
+## Turret Building Functions
+##
 
 func initiate_build_mode(tower_type):
 	
@@ -60,8 +88,6 @@ func initiate_build_mode(tower_type):
 	
 	print("tower type is " + build_type)
 
-
-
 func update_tower_preview():
 	
 #	print("tower preview updated!")
@@ -71,9 +97,6 @@ func update_tower_preview():
 	
 	var current_tile = tower_exclusion.local_to_map(local_mouse_position)
 	var tile_position = tower_exclusion.map_to_local(current_tile)
-	
-#	print(current_tile)
-#	print(tower_exclusion.get_cell_source_id(0, current_tile))
 
 	if tower_exclusion.get_cell_source_id(0, current_tile) == -1:
 		
@@ -82,22 +105,14 @@ func update_tower_preview():
 		build_location = tile_position
 		build_tile = current_tile
 		
-#		print("Build Valid!")
-#		print(tower_exclusion.get_cell_source_id(0, current_tile))
-		
 	else:
 		ui_node.ui_update_tower_preview(tile_position, invalid_color)
 		build_valid = false
-		
-#		print("Build Invalid")
-#		print(tower_exclusion.get_cell_source_id(0, current_tile))
-
 
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
 	get_node("UI/TowerPreview").free()
-
 
 func verify_and_build():
 	if build_valid:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwql67ns4urhc"
-path="res://.godot/imported/towerDefense_tile015.png-708274c21009f80bc9f13b4476c127b6.ctex"
+uid="uid://12qcpikeunk1"
+path="res://.godot/imported/tank_blue.png-3e0443a8949320b9a1b082c65d05dcf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/towerDefense_tile015.png"
-dest_files=["res://.godot/imported/towerDefense_tile015.png-708274c21009f80bc9f13b4476c127b6.ctex"]
+source_file="res://Assets/Enemies/tank_blue.png"
+dest_files=["res://.godot/imported/tank_blue.png-3e0443a8949320b9a1b082c65d05dcf4.ctex"]
 
 [params]
 

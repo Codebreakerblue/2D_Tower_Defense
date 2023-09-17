@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dj66r7fwg8ijs"]
+[gd_scene load_steps=21 format=3 uid="uid://dj66r7fwg8ijs"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/game_scene.gd" id="1_3ryf4"]
 [ext_resource type="PackedScene" uid="uid://cphm45oynr8c4" path="res://Scenes/Maps/map_1.tscn" id="1_ijptp"]
@@ -6,15 +6,28 @@
 [ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_b3sb8"]
 [ext_resource type="Texture2D" uid="uid://bg7r0xruondrw" path="res://Assets/UI/Buttons/blue_button10.png" id="3_s2iv8"]
 [ext_resource type="Texture2D" uid="uid://bhrr41a1jo2l0" path="res://Assets/Towers/towerDefense_tile249.png" id="4_3b0b2"]
-[ext_resource type="Script" path="res://Scenes/MainScenes/CannonT1BuildButton.gd" id="5_a778e"]
 [ext_resource type="Texture2D" uid="uid://6rchcmambjvx" path="res://Assets/Towers/towerDefense_tile250.png" id="5_m88g7"]
 [ext_resource type="Texture2D" uid="uid://b6hn6qcifk0ya" path="res://Assets/Towers/towerDefense_tile229.png" id="6_8b3gr"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/CannonT1BuildButton.gd" id="6_t8v2t"]
 [ext_resource type="Texture2D" uid="uid://bh2fqwpnm5hvi" path="res://Assets/Towers/towerDefense_tile251.png" id="7_drnxp"]
-[ext_resource type="Script" path="res://Scenes/MainScenes/CannonT2BuildButton.gd" id="7_jxjkt"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/CannonT2BuildButton.gd" id="8_a3afj"]
 [ext_resource type="Texture2D" uid="uid://b2bh8jct1gd21" path="res://Assets/Towers/towerDefense_tile252.png" id="8_uvm66"]
 [ext_resource type="Texture2D" uid="uid://v62qownmnfrq" path="res://Assets/Towers/towerDefense_tile228.png" id="8_wumk2"]
-[ext_resource type="Script" path="res://Scenes/MainScenes/MissileT1BuildButton.gd" id="9_fg5eo"]
-[ext_resource type="Script" path="res://Scenes/MainScenes/MissileT2BuildButton.gd" id="12_0361o"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/MissileT1BuildButton.gd" id="10_7s0ey"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/MissileT2BuildButton.gd" id="13_y2rd5"]
+[ext_resource type="Texture2D" uid="uid://cfyl75jdnjpl0" path="res://Assets/Icons/right.png" id="16_oflk8"]
+[ext_resource type="Texture2D" uid="uid://b4queaxahj8os" path="res://Assets/Icons/pause.png" id="17_cr6je"]
+[ext_resource type="Texture2D" uid="uid://8vom8kmo1d5m" path="res://Assets/Icons/fastForward.png" id="18_seal3"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ucjev"]
+device = -1
+keycode = 32
+physical_keycode = 32
+key_label = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_a2jr7"]
+events = [SubResource("InputEventKey_ucjev")]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_3ryf4")
@@ -61,7 +74,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("2_blkf4")
 texture_pressed = ExtResource("3_s2iv8")
 stretch_mode = 0
-script = ExtResource("5_a778e")
+script = ExtResource("6_t8v2t")
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/Margin/BuildBar/CannonT1BuildButton"]
 layout_mode = 1
@@ -81,7 +94,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("2_blkf4")
 texture_pressed = ExtResource("3_s2iv8")
 stretch_mode = 0
-script = ExtResource("7_jxjkt")
+script = ExtResource("8_a3afj")
 
 [node name="Icon" type="TextureRect" parent="UI/HUD/Margin/BuildBar/CannonT2BuildButton"]
 layout_mode = 1
@@ -101,7 +114,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("2_blkf4")
 texture_pressed = ExtResource("3_s2iv8")
 stretch_mode = 0
-script = ExtResource("9_fg5eo")
+script = ExtResource("10_7s0ey")
 
 [node name="Turret" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT1BuildButton"]
 z_index = 1
@@ -154,7 +167,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("2_blkf4")
 texture_pressed = ExtResource("3_s2iv8")
 stretch_mode = 0
-script = ExtResource("12_0361o")
+script = ExtResource("13_y2rd5")
 
 [node name="Turret" type="TextureRect" parent="UI/HUD/Margin/BuildBar/MissileT2BuildButton"]
 z_index = 1
@@ -198,3 +211,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_uvm66")
 stretch_mode = 3
+
+[node name="TimeControls" type="HBoxContainer" parent="UI/HUD/Margin"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="PlayPause" type="TextureButton" parent="UI/HUD/Margin/TimeControls"]
+process_mode = 3
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+shortcut = SubResource("Shortcut_a2jr7")
+texture_normal = ExtResource("16_oflk8")
+texture_pressed = ExtResource("17_cr6je")
+stretch_mode = 3
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/Margin/TimeControls"]
+process_mode = 3
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("18_seal3")
+stretch_mode = 3
+
+[connection signal="pressed" from="UI/HUD/Margin/TimeControls/PlayPause" to="UI" method="_on_play_pause_pressed"]
+[connection signal="pressed" from="UI/HUD/Margin/TimeControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]
