@@ -60,7 +60,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data(current_wave):
-	var wave_data = [["blue_tank", 0.7], ["blue_tank", 0.1]] ## TEMP hardcoded wave data for now
+	var wave_data = [["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0]] ## TEMP hardcoded wave data for now
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
@@ -121,7 +121,9 @@ func verify_and_build():
 		
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
-		map_node.get_node("TurretContainer").add_child(new_tower, true)
+		new_tower.turret_type = build_type
+		new_tower.active = true
+		map_node.get_node("TurretContainer").add_child(new_tower, false)
 		map_node.get_node("TowerExclusion").set_cell(0, build_tile, 99, Vector2i (1,0))
 		map_node.get_node("Decoration").set_cell(0, build_tile, -1)
 		
