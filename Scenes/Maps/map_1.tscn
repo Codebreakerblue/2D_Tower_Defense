@@ -26,20 +26,16 @@ layer_0/tile_data = PackedInt32Array(65536, 131072, 0, 65537, 131072, 0, 65538, 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = ExtResource("2_pdmk5")
 
-[node name="EnemyPathA" type="Path2D" parent="."]
-visible = false
+[node name="EnemyPathA" type="Path2D" parent="." groups=["EnemyPaths"]]
 curve = ExtResource("2_pdmk5")
 
-[node name="EnemyPathB" type="Path2D" parent="."]
-visible = false
+[node name="EnemyPathB" type="Path2D" parent="." groups=["EnemyPaths"]]
 curve = ExtResource("3_nw8hh")
 
-[node name="EnemyPathC" type="Path2D" parent="."]
-visible = false
+[node name="EnemyPathC" type="Path2D" parent="." groups=["EnemyPaths"]]
 curve = ExtResource("4_n78ev")
 
-[node name="EnemyPathD" type="Path2D" parent="."]
-visible = false
+[node name="EnemyPathD" type="Path2D" parent="." groups=["EnemyPaths"]]
 curve = ExtResource("4_l41uj")
 
 [node name="TurretContainer" type="Node2D" parent="."]

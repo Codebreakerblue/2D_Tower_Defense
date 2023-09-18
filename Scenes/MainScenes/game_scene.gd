@@ -59,14 +59,31 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data(current_wave):
-	var wave_data = [["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0], ["blue_tank", 1.0]] ## TEMP hardcoded wave data for now
+	
+	var wave_data = [["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 1.5], 
+	["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 1.5], 
+	["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 1.5], 
+	["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 1.5], 
+	["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 0.75], ["blue_tank", 1.5] 
+	] ## TEMP hardcoded wave data for now
+	
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
 func spawn_enemies(wave_data):
+	
 	for i in wave_data:
+		
+		randomize()
+		var paths_array = get_tree().get_nodes_in_group("EnemyPaths")
+		
+		var random_path = paths_array[randi_range(0, paths_array.size()-1)].to_string()
+		
+#		print(random_path)
+		
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
-		map_node.get_node("EnemyPath").add_child(new_enemy, true)
+		map_node.get_node(random_path).add_child(new_enemy, true)
+		
 		await get_tree().create_timer(i[1], false).timeout
 		
 
