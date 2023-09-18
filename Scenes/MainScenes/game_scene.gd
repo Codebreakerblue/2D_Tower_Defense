@@ -121,6 +121,7 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.turret_type = build_type
+		new_tower.turret_category = GameData.tower_data[build_type]["category"]
 		new_tower.active = true
 		map_node.get_node("TurretContainer").add_child(new_tower, false)
 		map_node.get_node("TowerExclusion").set_cell(0, build_tile, 99, Vector2i (1,0))
