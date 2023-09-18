@@ -16,6 +16,7 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_augfo"]
 texture = ExtResource("1_ixnon")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/next_alternative_id = 3
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -313,57 +314,68 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhtc4"]
 texture = ExtResource("3_hqs03")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgc65"]
 texture = ExtResource("3_pm3pl")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ary4q"]
 texture = ExtResource("4_hlb2a")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w70ra"]
 texture = ExtResource("2_fk0aj")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qtgb3"]
 texture = ExtResource("4_7a6vy")
 texture_region_size = Vector2i(28, 28)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ceu2q"]
 texture = ExtResource("5_v46u8")
 texture_region_size = Vector2i(28, 28)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mj6l2"]
 texture = ExtResource("3_kr2ao")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/next_alternative_id = 4
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jwpo"]
 texture = ExtResource("4_xw3cd")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4duv"]
 texture = ExtResource("6_gtyop")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rif2"]
 texture = ExtResource("5_w364w")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lac3j"]
 texture = ExtResource("12_0schh")
 texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
 1:0/0 = 0
 
 [resource]
