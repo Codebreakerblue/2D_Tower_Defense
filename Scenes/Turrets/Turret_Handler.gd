@@ -41,7 +41,7 @@ func turret_fire():
 	elif turret_category == "missile":
 		fire_missile()
 	
-	targeted_enemy.on_hit(GameData.tower_data[turret_type]["damage"])
+	targeted_enemy.on_hit(GameData.tower_data[turret_type]["damage"], GameData.tower_data[turret_type]["category"])
 	await get_tree().create_timer((60.0/GameData.tower_data[turret_type]["RPM"]), false).timeout
 	
 	turret_ready = true

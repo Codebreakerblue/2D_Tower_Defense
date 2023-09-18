@@ -32,3 +32,5 @@ texture_under = ExtResource("3_mmo2x")
 texture_progress = ExtResource("3_mmo2x")
 tint_under = Color(0.14902, 0.14902, 0.14902, 1)
 tint_progress = Color(0, 0.741176, 0.0862745, 1)
+
+[node name="HitContainer" type="Node2D" parent="."]

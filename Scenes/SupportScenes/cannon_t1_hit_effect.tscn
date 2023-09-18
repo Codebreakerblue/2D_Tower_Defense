@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdv081n2xyxw1"]
+
+[ext_resource type="SpriteFrames" uid="uid://bun33ywbiarom" path="res://Resources/Sprites/cannon_HitEffect.tres" id="1_1q2kf"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/cannon_t1_hit_effect.gd" id="2_jo0gp"]
+
+[node name="cannon_t1_HitEffect" type="AnimatedSprite2D"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("1_1q2kf")
+animation = &"HitEffect"
+frame = 5
+frame_progress = 1.0
+speed_scale = 2.0
+script = ExtResource("2_jo0gp")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

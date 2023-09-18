@@ -20,6 +20,6 @@ animations = [{
 "texture": ExtResource("3_608fg")
 }],
 "loop": false,
-"name": &"default",
+"name": &"MuzzleFlash",
 "speed": 10.0
 }]
