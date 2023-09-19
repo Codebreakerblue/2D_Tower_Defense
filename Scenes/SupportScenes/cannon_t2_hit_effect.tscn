@@ -7,7 +7,6 @@
 scale = Vector2(0.3, 0.3)
 sprite_frames = ExtResource("1_n3e2j")
 animation = &"HitEffect"
-frame = 5
 frame_progress = 1.0
 speed_scale = 2.0
 script = ExtResource("2_u07ud")

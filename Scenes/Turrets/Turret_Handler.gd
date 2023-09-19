@@ -6,7 +6,10 @@ var turret_type
 var turret_category
 var enemy_array = []
 var targeted_enemy
-var counter = 0
+var target_angle
+var current_angle
+var turn_speed
+var firing_counter = 0
 
 
 
@@ -14,10 +17,11 @@ func _ready():
 	if active:
 		self.get_node("Range/RangeCollisionShape").get_shape().radius = 0.5 * GameData.tower_data[self.turret_type]["range"]
 
+
 func _physics_process(delta):
 	if enemy_array.size() != 0 and active:
 		select_enemy()
-		turret_turn()
+		turret_turn(delta)
 		if turret_ready:
 			turret_fire()
 	else:
@@ -25,8 +29,15 @@ func _physics_process(delta):
 
 
 
-func turret_turn():
-	get_node("Turret").look_at(targeted_enemy.position)
+func turret_turn(delta):
+	
+	current_angle = get_node("Turret").get_rotation()
+	target_angle = get_node("Turret").get_angle_to(targeted_enemy.position) + current_angle
+	var turn_tween = create_tween()
+#	turn_tween.tween_property(get_node("Turret"), get_node("Turret").rotation, current_angle, 1/turn_speed)
+	turn_tween.tween_property(get_node("Turret"), "rotation", target_angle, .15)
+	
+#	get_node("Turret").look_at(targeted_enemy.position)
 
 func turret_fire():
 	
@@ -52,12 +63,12 @@ func fire_cannon_t1():
 
 func fire_cannon_t2():
 	
-	if counter == 0:
-		counter = 1
+	if firing_counter == 0:
+		firing_counter = 1
 		get_node("AnimationPlayer").play("CannonFireT2A")
 #		print("A!")
 	else:
-		counter = 0
+		firing_counter = 0
 		get_node("AnimationPlayer").play("CannonFireT2B")
 #		print("B!")
 

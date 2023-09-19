@@ -15,7 +15,7 @@ var valid_color = "26ff00aa"
 var invalid_color = "ff442288"
 
 var current_wave = 0
-var enemies_in_wave = 0
+var enemies_in_wave = []
 
 
 func _ready():
@@ -31,6 +31,7 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
+	
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -79,13 +80,18 @@ func spawn_enemies(wave_data):
 		
 		var random_path = paths_array[randi_range(0, paths_array.size()-1)].to_string()
 		
-#		print(random_path)
-		
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		map_node.get_node(random_path).add_child(new_enemy, true)
+#		enemies_in_wave.append(new_enemy)
+		
 		
 		await get_tree().create_timer(i[1], false).timeout
 		
+
+func enemy_succeed(enemy):
+	print("Enemy Succeeded!")
+	print(enemy.name)
+	self.queue_free()
 
 ##
 ## Turret Building Functions
