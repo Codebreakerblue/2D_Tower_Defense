@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cphm45oynr8c4"]
+[gd_scene load_steps=7 format=3 uid="uid://cphm45oynr8c4"]
 
 [ext_resource type="TileSet" uid="uid://bs4hf5v00bh8t" path="res://Resources/Tilesets/TerrainTileSet.tres" id="1_xh7cx"]
 [ext_resource type="Curve2D" uid="uid://c5p1sl161jl06" path="res://Resources/Paths/map_1_EnemyPathA.tres" id="2_pdmk5"]
 [ext_resource type="Curve2D" uid="uid://b82urw12ey26c" path="res://Resources/Paths/map_1_EnemyPathB.tres" id="3_nw8hh"]
 [ext_resource type="Curve2D" uid="uid://csceyu7h80cqq" path="res://Resources/Paths/map_1_EnemyPathD.tres" id="4_l41uj"]
 [ext_resource type="Curve2D" uid="uid://dme4lh05p8xwu" path="res://Resources/Paths/map_1_EnemyPathC.tres" id="4_n78ev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti6ee"]
+size = Vector2(40, 48)
 
 [node name="Map1" type="Node2D"]
 
@@ -23,10 +26,6 @@ tile_set = ExtResource("1_xh7cx")
 format = 2
 layer_0/tile_data = PackedInt32Array(65536, 131072, 0, 65537, 131072, 0, 65538, 262144, 1, 131074, 65536, 0, 196610, 65536, 0, 393222, 196608, 0, 393223, 131072, 0, 393224, 262144, 0, 458760, 65536, 0, 524296, 65536, 0, 655368, 327680, 1, 327696, 65536, 0, 262160, 65536, 0, 393232, 327680, 1, 458769, 65536, 0, 393233, 393216, 0, 393234, 131072, 0, 393235, 131072, 0, 393236, 131072, 0, 589841, 65536, 0, 524305, 65536, 0, 131086, 196608, 1, 131087, 131072, 0, 196624, 65536, 0, 131088, 262144, 1, 458763, 196608, 1, 458764, 131072, 0, 458765, 131072, 0, 327692, 327680, 1, 458766, 131072, 0, 458767, 262144, 1, 524303, 65536, 0, 589839, 65536, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 262144, 1, 131084, 65536, 0, 196620, 65536, 0, 262156, 65536, 0, 327693, 131072, 0, 327694, 393216, 1, 262158, 65536, 0, 196622, 65536, 0, 327688, 65536, 0, 262152, 262144, 1, 262151, 327680, 1, 196615, 65536, 0, 65543, 196608, 1, 131079, 65536, 0, 65544, 131072, 0, 262149, 131072, 0, 262150, 262144, 1, 327686, 65536, 0, 196617, 1, 0, 327683, 8, 0, 589837, 1, 0, 327698, 1, 0, 327695, 1, 0, 327691, 7, 0, 131082, 1, 0, 131080, 3, 0, 589840, 3, 0, 524306, 4, 0, 393219, 3, 0, 65540, 3, 0, 262161, 3, 0, 131085, 3, 0, 65552, 1, 0, 196618, 3, 0, 262159, 4, 0, 393228, 3, 0, 327687, 4, 0, 196609, 4, 0, 524302, 6, 0, 262144, 7, 0, 18, 1, 0, 131091, 1, 0, 655378, 1, 0, 589843, 1, 0, 458755, 1, 0, 262146, 65536, 0, 524290, 65536, 0, 589826, 327680, 1, 589827, 131072, 0, 589828, 393216, 1, 524292, 65536, 0, 458756, 196608, 0, 393220, 65536, 0, 327684, 65536, 0, 262148, 196608, 1, 327682, 65536, 0, 393218, 65536, 0, 458754, 65536, 0, 589832, 65536, 0, 655369, 131072, 0, 655370, 131072, 0, 655371, 393216, 1, 589835, 65536, 0, 524299, 65536, 0, 458757, 131072, 0, 458758, 393216, 1, 196608, 1, 0, 131071, 131072, 0, 655377, 393216, 1, 655376, 131072, 0, 655375, 327680, 1)
 
-[node name="EnemyPath" type="Path2D" parent="."]
-visible = false
-curve = ExtResource("2_pdmk5")
-
 [node name="EnemyPathA" type="Path2D" parent="." groups=["EnemyPaths"]]
 curve = ExtResource("2_pdmk5")
 
@@ -40,3 +39,9 @@ curve = ExtResource("4_n78ev")
 curve = ExtResource("4_l41uj")
 
 [node name="TurretContainer" type="Node2D" parent="."]
+
+[node name="EnemyGoal" type="Area2D" parent="."]
+
+[node name="EnemyGoalShape" type="CollisionShape2D" parent="EnemyGoal"]
+position = Vector2(1324, 416)
+shape = SubResource("RectangleShape2D_ti6ee")

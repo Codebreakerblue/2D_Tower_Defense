@@ -16,7 +16,6 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_augfo"]
 texture = ExtResource("1_ixnon")
 texture_region_size = Vector2i(64, 64)
-use_texture_padding = false
 0:0/next_alternative_id = 3
 0:0/0 = 0
 0:0/0/terrain_set = 0

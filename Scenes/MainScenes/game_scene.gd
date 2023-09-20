@@ -31,6 +31,8 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
+		
+	
 	
 
 func _unhandled_input(event):
@@ -81,8 +83,8 @@ func spawn_enemies(wave_data):
 		var random_path = paths_array[randi_range(0, paths_array.size()-1)].to_string()
 		
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
+		new_enemy.add_to_group("Enemies")
 		map_node.get_node(random_path).add_child(new_enemy, true)
-#		enemies_in_wave.append(new_enemy)
 		
 		
 		await get_tree().create_timer(i[1], false).timeout

@@ -74,8 +74,7 @@ func hit_effect(category, randomize_position = true, random_range = 30):
 		new_hit.position = hit_position
 		hit_container.add_child(new_hit)
 
-func on_succeed():
-	pass ## TODO make this work ;_;
+func on_succeed(): ## TODO make this work ;_;
 	self.queue_free()
 	
 
