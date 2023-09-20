@@ -26,14 +26,12 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("build_pressed", initiate_build_mode)
 		print(i.name + " connected")
-	
 
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
-		
-	
-	
+
+## Input Functions
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -51,9 +49,7 @@ func _unhandled_key_input(event):
 #		print("multiple build off!")
 		multiple_build = false
 
-##
 ## Enemy Wave Functions
-##
 
 func start_next_wave():
 	current_wave += 1
@@ -88,16 +84,13 @@ func spawn_enemies(wave_data):
 		
 		
 		await get_tree().create_timer(i[1], false).timeout
-		
 
 func enemy_succeed(enemy):
 	print("Enemy Succeeded!")
 	print(enemy.name)
 	self.queue_free()
 
-##
 ## Turret Building Functions
-##
 
 func initiate_build_mode(tower_type):
 	

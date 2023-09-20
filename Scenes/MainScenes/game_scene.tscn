@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dj66r7fwg8ijs"]
+[gd_scene load_steps=24 format=3 uid="uid://dj66r7fwg8ijs"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/game_scene.gd" id="1_3ryf4"]
 [ext_resource type="PackedScene" uid="uid://cphm45oynr8c4" path="res://Scenes/Maps/map_1.tscn" id="1_ijptp"]
@@ -18,7 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://cfyl75jdnjpl0" path="res://Assets/Icons/right.png" id="16_oflk8"]
 [ext_resource type="Texture2D" uid="uid://b4queaxahj8os" path="res://Assets/Icons/pause.png" id="17_cr6je"]
 [ext_resource type="Texture2D" uid="uid://8vom8kmo1d5m" path="res://Assets/Icons/fastForward.png" id="18_seal3"]
-[ext_resource type="Texture2D" uid="uid://cvp05o6u2eke0" path="res://Assets/Icons/cross.png" id="19_uqiao"]
+[ext_resource type="Texture2D" uid="uid://dbhavucgbhgh3" path="res://Assets/Icons/menuList.png" id="19_e46t8"]
+[ext_resource type="Texture2D" uid="uid://c2dhr7ft1qhee" path="res://Assets/Icons/exit.png" id="21_p4iyv"]
+[ext_resource type="Texture2D" uid="uid://cxc1cylriqnmx" path="res://Assets/Icons/gear.png" id="22_ebtik"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ucjev"]
 device = -1
@@ -241,11 +243,29 @@ size_flags_vertical = 4
 texture_normal = ExtResource("18_seal3")
 stretch_mode = 3
 
-[node name="ExitGameButton" type="TextureButton" parent="UI/HUD/Margin"]
+[node name="InfoBar" type="HBoxContainer" parent="UI/HUD/Margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-texture_normal = ExtResource("19_uqiao")
+
+[node name="MenuBar" type="VBoxContainer" parent="UI/HUD/Margin/InfoBar"]
+layout_mode = 2
+
+[node name="MenuButton" type="TextureButton" parent="UI/HUD/Margin/InfoBar/MenuBar"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("19_e46t8")
+
+[node name="SettingsButton" type="TextureButton" parent="UI/HUD/Margin/InfoBar/MenuBar" groups=["MenuBarButtons"]]
+layout_mode = 2
+texture_normal = ExtResource("22_ebtik")
+
+[node name="ExitToMenuButton" type="TextureButton" parent="UI/HUD/Margin/InfoBar/MenuBar" groups=["MenuBarButtons"]]
+layout_mode = 2
+texture_normal = ExtResource("21_p4iyv")
 
 [connection signal="pressed" from="UI/HUD/Margin/TimeControls/PlayPause" to="UI" method="_on_play_pause_pressed"]
 [connection signal="pressed" from="UI/HUD/Margin/TimeControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]
+[connection signal="pressed" from="UI/HUD/Margin/InfoBar/MenuBar/MenuButton" to="UI" method="_on_menu_button_pressed"]

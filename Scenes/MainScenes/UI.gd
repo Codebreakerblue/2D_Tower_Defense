@@ -1,5 +1,18 @@
 extends CanvasLayer
 
+var menu_bar_button
+var menu_bar_buttons
+var menu_bar_visible = false
+
+func _ready():
+	menu_bar_button = get_node("HUD/Margin/InfoBar/MenuBar/MenuButton")
+	
+	menu_bar_buttons = get_tree().get_nodes_in_group("MenuBarButtons")
+	for i in menu_bar_buttons:
+		i.hide()
+
+## Build Preview Functions
+
 func set_tower_preview(tower_type, mouse_position):
 	
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instantiate()
@@ -22,7 +35,6 @@ func set_tower_preview(tower_type, mouse_position):
 	add_child(control,true)
 	move_child(get_node("TowerPreview"), 0)
 
-
 func ui_update_tower_preview(tile_position, hexcolor):
 	
 	var control = get_node("TowerPreview")
@@ -35,9 +47,7 @@ func ui_update_tower_preview(tile_position, hexcolor):
 			drag_tower.modulate = Color(hexcolor)
 			control.get_node("RangeIndicator").modulate = Color(hexcolor)
 
-##
 ## Game Control Functions
-##
 
 func _on_play_pause_pressed():
 	if get_parent().build_mode:
@@ -49,7 +59,6 @@ func _on_play_pause_pressed():
 		
 	else:
 		get_tree().paused = true
-		
 
 func _on_speed_up_pressed():
 	if get_parent().build_mode:
@@ -58,3 +67,17 @@ func _on_speed_up_pressed():
 		Engine.set_time_scale(1.0)
 	else:
 		Engine.set_time_scale(2.0)
+
+func _on_menu_button_pressed():
+	
+	if menu_bar_visible ==  true:
+		menu_bar_button.modulate = Color("ffffffff")
+		for i in menu_bar_buttons:
+			menu_bar_visible = false
+			i.hide()
+	else:
+		menu_bar_button.modulate = Color("ffffff88")
+		for i in menu_bar_buttons:
+			menu_bar_visible = true
+			i.show()
+	
